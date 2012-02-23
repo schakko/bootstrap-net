@@ -1,0 +1,63 @@
+﻿<Window x:Class="Ecw.Windows.Printing.PrintWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:Ecw.Windows.Printing" Title="Druckansicht" Height="800" Width="1000" Background="#F0F0F0">
+	<Window.Resources>
+		<Style TargetType="local:PrintDocumentViewer">
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="DocumentViewer">
+						<Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Focusable="False">
+							<Grid KeyboardNavigation.TabNavigation="Local">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto" />
+									<RowDefinition Height="*" />
+									<RowDefinition Height="Auto" />
+								</Grid.RowDefinitions>
+								<ToolBar ToolBarTray.IsLocked="True" KeyboardNavigation.TabNavigation="Continue">
+									<Button ToolTip="Drucken" Command="ApplicationCommands.Print" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+										<Image VerticalAlignment="Center" Width="22" Height="22" Source="Icons/fileprint.png" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+									</Button>
+									<Button ToolTip="XPS-Export" Click="Save">
+										<Image VerticalAlignment="Center" Width="22" Height="22" Source="Icons/xps.png" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+									</Button>
+									<!--<Button ToolTip="PDF-Export" Click="PdfExport" >
+                                        <Image VerticalAlignment="Center" Width="22" Height="22" Source="Icons/pdf.png" RenderOptions.BitmapScalingMode="NearestNeighbor"/>
+                                    </Button>-->
+									<!--<Button Command="ApplicationCommands.Copy"  CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Copy"/>-->
+									<Separator />
+									<Button ToolTip="Vergrößern" Command="NavigationCommands.IncreaseZoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+										<Image VerticalAlignment="Center" Width="22" Height="22" Source="Icons/zoom_in.png" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+									</Button>
+
+									<Button ToolTip="Verkleinern" Command="NavigationCommands.DecreaseZoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+										<Image VerticalAlignment="Center" Width="22" Height="22" Source="Icons/zoom_out.png" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+									</Button>
+									<Separator />
+									<Button ToolTip="Original Größe" Command="NavigationCommands.Zoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="100.0">
+										<Image VerticalAlignment="Center" Width="22" Height="22" Source="Icons/zoom_original.png" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+									</Button>
+									<Button ToolTip="Seitenbreite" Command="DocumentViewer.FitToWidthCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}">
+										<Image VerticalAlignment="Center" Width="22" Height="22" Source="Icons/zoom_fit_width.png" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+									</Button>
+									<Button ToolTip="Ganze Seite" Command="DocumentViewer.FitToMaxPagesAcrossCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="1">
+										<Image VerticalAlignment="Center" Width="22" Height="22" Source="Icons/zoom_fit_best.png" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+									</Button>
+									<Button ToolTip="Zwei Seiten" Command="DocumentViewer.FitToMaxPagesAcrossCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="2">
+										<Image VerticalAlignment="Center" Width="22" Height="22" Source="Icons/zoom_fit_two.png" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+									</Button>
+									<Separator />
+									<ComboBox SelectionChanged="LayoutSelectionChanged" Loaded="ComboBox_Loaded" />
+								</ToolBar>
+								<ScrollViewer Grid.Row="1" CanContentScroll="true" HorizontalScrollBarVisibility="Auto" x:Name="PART_ContentHost" IsTabStop="true" />
+							</Grid>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+	</Window.Resources>
+	<Grid>
+		<Label x:Name="CreationMessageLabel" Margin="20" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" BorderBrush="Black" BorderThickness="1" Background="White">
+			Dokument wird erstellt …
+		</Label>
+		<local:PrintDocumentViewer x:Name="documentViewer" />
+	</Grid>
+</Window>

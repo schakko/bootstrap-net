@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{620625C7-A561-4A49-ACAD-F416755B3C17}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ecw.Windows</RootNamespace>
+    <AssemblyName>Ecw.Windows</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\BindableScrollBar.cs" />
+    <Compile Include="Printing\PageMock.cs" />
+    <Compile Include="Printing\PrintableBase.cs" />
+    <Compile Include="Printing\PrintTable.cs" />
+    <Compile Include="Printing\PrintFrameworkElement.cs" />
+    <Compile Include="Printing\PrintTemplate.cs" />
+    <Compile Include="Printing\PrintDocument.cs" />
+    <Compile Include="Printing\IPrintable.cs" />
+    <Compile Include="Printing\PrintDocumentViewer.cs" />
+    <Compile Include="Printing\PrintLayout.cs" />
+    <Compile Include="Printing\PrintPage.xaml.cs">
+      <DependentUpon>PrintPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Printing\PrintPages.cs" />
+    <Compile Include="Printing\PrintWindow.xaml.cs">
+      <DependentUpon>PrintWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Printing\PrintPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Printing\PrintWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Printing\Icons\document_open.png" />
+    <Resource Include="Printing\Icons\document_preview.png" />
+    <Resource Include="Printing\Icons\fileprint.png" />
+    <Resource Include="Printing\Icons\filesave.png" />
+    <Resource Include="Printing\Icons\help_about.png" />
+    <Resource Include="Printing\Icons\Info.png" />
+    <Resource Include="Printing\Icons\pdf.png" />
+    <Resource Include="Printing\Icons\printer.ico" />
+    <Resource Include="Printing\Icons\redo.png" />
+    <Resource Include="Printing\Icons\reload.png" />
+    <Resource Include="Printing\Icons\undo.png" />
+    <Resource Include="Printing\Icons\users.png" />
+    <Resource Include="Printing\Icons\xps.png" />
+    <Resource Include="Printing\Icons\zoom_fit_best.png" />
+    <Resource Include="Printing\Icons\zoom_fit_two.png" />
+    <Resource Include="Printing\Icons\zoom_fit_width.png" />
+    <Resource Include="Printing\Icons\zoom_in.png" />
+    <Resource Include="Printing\Icons\zoom_original.png" />
+    <Resource Include="Printing\Icons\zoom_out.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
